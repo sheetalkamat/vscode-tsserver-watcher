@@ -1,0 +1,51 @@
+{
+  "name": "vscode-tsserver-watcher",
+  "displayName": "vscode-tsserver-watcher",
+  "description": "Extension to forward watching from tsserver to vscode",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "typescriptServerPlugins": [
+      {
+        "name": "vscode-tsserver-watcher-plugin",
+        "enableForWorkspaceTypeScriptVersions": true
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "vscode-tsserver-watcher-plugin": "1.0.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.77.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "https://typescript.visualstudio.com/cf7ac146-d525-443c-b23c-0d58337efebc/_apis/build/builds/153693/artifacts?artifactName=tgz&fileId=26EF50313EF6DC11AE5939709DA47D6DF2E2C014E54C4C193726E4789CA04AC702&fileName=/typescript-5.1.0-insiders.20230502.tgz",
+    "@vscode/test-electron": "^2.3.0"
+  }
+}
